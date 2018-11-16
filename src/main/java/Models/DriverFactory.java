@@ -15,6 +15,7 @@ public class DriverFactory {
 
 
     public WebDriver getDriver() {
+        System.out.println(getFromConfig());
         switch (getFromConfig()) {
             case CHROME:
                 return getChromeDriver();
