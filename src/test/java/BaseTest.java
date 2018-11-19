@@ -33,6 +33,7 @@ public class BaseTest {
         //driver = factory.getDriver();
 
         DesiredCapabilities cap = DesiredCapabilities.chrome();
+
         cap.setPlatform(Platform.WINDOWS);
 
         URL url = new URL("http://localhost:4444/wd/hub");
