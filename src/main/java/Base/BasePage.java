@@ -13,9 +13,11 @@ import java.util.Random;
 public class BasePage extends WebElementManipulator{
 
     protected WebDriver driver;
+    private Actions action;
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
+        action = new Actions(driver);
     }
 
     protected void waitToByClicable(WebElement element) {
@@ -24,7 +26,7 @@ public class BasePage extends WebElementManipulator{
     }
 
     protected void hoverOnElement(WebElement element) {
-        Actions action = new Actions(driver);
+        //Actions action = new Actions(driver);
         action.moveToElement(element).build().perform();
     }
 

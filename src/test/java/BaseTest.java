@@ -1,16 +1,21 @@
 import Models.DriverFactory;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
+import org.openqa.selenium.Platform;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.logging.LogEntries;
 import org.openqa.selenium.logging.LogEntry;
 import org.openqa.selenium.logging.LogType;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
@@ -23,9 +28,16 @@ public class BaseTest {
 
 
     @BeforeMethod
-    public void setUp(){
-        factory = new DriverFactory();
-        driver = factory.getDriver();
+    public void setUp() throws MalformedURLException {
+        //factory = new DriverFactory();
+        //driver = factory.getDriver();
+
+        DesiredCapabilities cap = DesiredCapabilities.chrome();
+        cap.setPlatform(Platform.WINDOWS);
+
+        URL url = new URL("http://localhost:4444/wd/hub");
+
+        driver = new RemoteWebDriver(url, cap);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get("http://store.demoqa.com/");
     }

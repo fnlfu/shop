@@ -31,7 +31,43 @@ public class ShopTest extends BaseTest {
     }
 
     @Test
-    public void shopTest() {
+    public void shopTestOne() {
+
+        for (int i = 0; i < 4; i++) {
+            topMenuPage.SelectRandomCategory();
+            categoryPage.selectProduct();
+            productPage.AddProductToCart(order);
+        }
+
+        topMenuPage.goIntoCart();
+        cartPage.checkCart(order)
+                .clickContinueBtn();
+        infoPage.checkPrice(order)
+                .setUser(user)
+                .Purchase();
+        finalPage.checkProduct(order)
+                .checkPrice(order);
+    }
+    @Test
+    public void shopTestTwo() {
+
+        for (int i = 0; i < 4; i++) {
+            topMenuPage.SelectRandomCategory();
+            categoryPage.selectProduct();
+            productPage.AddProductToCart(order);
+        }
+
+        topMenuPage.goIntoCart();
+        cartPage.checkCart(order)
+                .clickContinueBtn();
+        infoPage.checkPrice(order)
+                .setUser(user)
+                .Purchase();
+        finalPage.checkProduct(order)
+                .checkPrice(order);
+    }
+    @Test
+    public void shopTestThree() {
 
         for (int i = 0; i < 4; i++) {
             topMenuPage.SelectRandomCategory();
